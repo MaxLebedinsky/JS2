@@ -1,30 +1,92 @@
 'use strict';
 
-const goods = [
-    { title: 'Snowboard', price: 500 },
-    { title: 'Helmet', price: 100 },
-    { title: 'Bindings', price: 200 },
-    { title: 'Boots', price: 300 },
-];
+class GoodsItem {
+    constructor(title, price) {
+        this.title = title;
+        this.price = price;
+    }
+    render() {
+        return `<div class="goods-item">
+        <img src="http://dummyimage.com/150x200" alt="item"><h3>${this.title}</h3>
+        <p>Price: <span>$${this.price}<span></p>
+        </div>`;
+    }
+}
 
-// const renderGoodsItem = (title, price) => {
-//     return `<div class="goods-item"><h3>${title}</h3><p>${price}</p></div>`;
-//   };
+class GoodsList {
+    constructor() {
+        this.goods = [];
+    }
+    fetchGoods() {
+        this.goods = [
+            { title: 'Snowboard', price: 500 },
+            { title: 'Helmet', price: 100 },
+            { title: 'Bindings', price: 200 },
+            { title: 'Boots', price: 300 }
+        ];
+    }
+    render() {
+        let listHTML = '';
+        this.goods.forEach(good => {
+            const goodItem = new GoodsItem(good.title, good.price);
+            listHTML += goodItem.render();
+        });
+        document.querySelector('.goods-list').innerHTML = listHTML;
+    }
 
-// В функции renderGoodsItem можно убрать фигурные скобки и return
+    // Задание 2: метод, считащий суммарную стоимость всех товаров
+    countTotalSum() {
+        let sum = 0;
+        this.goods.forEach(good => { sum += good.price });
+        return sum;
+    }
+}
 
-const renderGoodsItem = (title = 'Default name', price = 0) => `<div class="goods-item"><img src="http://dummyimage.com/150x200" alt="item"><h3>${title}</h3><p>Price: <span>$${price}<span></p></div>`;
+// Задание 1: классы корзины и элемента корзины
+class Cart {
+    constructor() {
+        // массив элементов корзины
+        this.items = [];
+    }
 
-// const renderGoodsList = (list) => {
-//     let goodsList = list.map(item => renderGoodsItem(item.title, item.price));
-//     document.querySelector('.goods-list').innerHTML = goodsList;
-//   }
+    // добавление элемента в корзину
+    addItem() { }
 
-// В функции renderGoodsList можно убрать скобки вокруг единственного аргумента list и переписать тело в одну строку (не объявляя переменную goodsList), это позволит убрать фигурные скобки
+    // удаление элемента из корзины
+    deleteItem() { }
 
-// Задание 3*: Запятые выводятся потому, что в innerHTML записывается строка, сделанная из массива list.map, а в виде строки содержимое массивов выводится через запятую. Исправить это можно с помощью метода join('').
+    // очистка корзины
+    clear() { }
 
+    // подсчёт общей стоимости корзины
+    countCartSum() { }
 
-const renderGoodsList = list => document.querySelector('.goods-list').innerHTML = list.map(item => renderGoodsItem(item.title, item.price)).join('');
+    // формирование итоговой строки корзины
+    // 'В корзине ... товаров на сумму $...'
+    createTotalLine() { }
 
-renderGoodsList(goods);
+    // 'отрисовка' корзины в разметке
+    render() { }
+
+}
+
+class CartItem {
+    constructor(product) {
+        this.title = product.title;
+        this.price = product.price;
+        // кол-во данного товара в корзине
+        this.quantity = 0;
+    }
+
+    // подсчёт подытога по данной позиции корзины
+    countSubtotal() { }
+
+    // 'отрисовка' элемента корзины в разметке
+    render() { }
+}
+
+const list = new GoodsList();
+list.fetchGoods();
+list.render();
+console.log(`Суммарная стоимость товаров: $${list.countTotalSum()}`);
+
