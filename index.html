@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eShop</title>
+    <title>Validation</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <script defer src="validation.js"></script>
 </head>
-
 <body>
-    <header class="header wrapper">
-        <button class="cart-button" type="button">Корзина</button>
-    </header>
-    <main>
-        <div class="wrapper">
-            <div class="goods-list"></div>
-        </div>
-    </main>
+    <form action="#">
+        <p>Имя (только буквы):</p>
+        <input class="input-name" type="text">
 
+        <p>Телефон в формате +7(000)000-0000:</p>
+        <input class="input-tel" type="text">
+
+        <p>E-mail:</p>
+        <input class="input-email" type="text">
+
+        <p>Сообщение:</p>
+        <textarea class="input-name comment" type="text"></textarea>
+
+        <button class="btn-submit" type="submit">Отправить</button>
+        <div class="form-message"></div>
+    </form>
+    
 </body>
-
 </html>
