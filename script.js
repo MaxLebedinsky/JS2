@@ -9,7 +9,8 @@ new Vue({
         goods: [],
         filteredGoods: [],
         searchLine: '',
-        isVisibleCart: false
+        isVisibleCart: false,
+        cart: []
     },
 
     methods: {
@@ -26,19 +27,23 @@ new Vue({
 
             this.goods = [{
                     product_name: 'Snowboard',
-                    price: 1500
+                    price: 1500,
+                    discount: 0
                 },
                 {
                     product_name: 'Boots',
-                    price: 500
+                    price: 500,
+                    discount: 10
                 },
                 {
                     product_name: 'Bindings',
-                    price: 300
+                    price: 300,
+                    discount: 5
                 },
                 {
                     product_name: 'Helmet',
-                    price: 200
+                    price: 200,
+                    discount: 0
                 }
             ];
 
@@ -58,7 +63,20 @@ new Vue({
         },
         cartCloseClickHandler() {
             this.isVisibleCart = false;
+        },
+        addClickHandler(good) {
+            this.cart.push(good);
+            console.log(this.cart);
+        },
+        calcActualPrice(good) {
+            return Math.round(good.price / 100 * (100 - good.discount));
+        },
+        calcCartTotal() {
+            let total = 0;
+            this.cart.forEach(item => total += this.calcActualPrice(item));
+            return total;
         }
+
     },
 
     mounted() {

@@ -22,16 +22,26 @@
                 <div class="goods-item" v-for="good in filteredGoods">
                     <img src="http://dummyimage.com/150x200" alt="item">
                     <h3>{{ good.product_name }}</h3>
-                    <p>Price: <span>{{ good.price}}</span> </p>
+                    <p>Price: <span>{{ good.price }}</span> </p>
+                    <button class="add-to-cart-button" type="button" v-on:click="addClickHandler(good)">
+                        Добавить в корзину</button>
                 </div>
                 <div class="dummy wrapper" v-if="!filteredGoods.length">
                     <p>Нет данных</p>
                 </div>
             </div>
             <div class="layover" v-if="isVisibleCart" v-on:click="cartCloseClickHandler">
-                <div class="cart">
-                    <button class="cart-close-button" v-on:click="cartCloseClickHandler">X</button>
-                    Здесь будет содержимое корзины
+
+            </div>
+            <div class="cart" v-if="isVisibleCart">
+                <h2>Корзина</h2>
+                <button class="cart-close-button" v-on:click="cartCloseClickHandler">X</button>
+                <div class="cart-item" v-for="item in cart">
+                    <p><span>{{ item.product_name }}</span> Цена: ${{ item.price }}
+                        Скидка: {{ item.discount }}% Стоимость: ${{ calcActualPrice(item) }}</p>
+                </div>
+                <div class="cart-total">
+                    <h3>Итого: ${{ calcCartTotal() }}</h3>
                 </div>
             </div>
         </main>
