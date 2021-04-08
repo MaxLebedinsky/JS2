@@ -8,7 +8,8 @@ body {
     background: whitesmoke;
 }
 
-button:active, button:focus {
+button:active,
+button:focus {
     border: none;
     outline: none;
 }
@@ -28,7 +29,9 @@ button:active, button:focus {
     border-radius: 15px;
 }
 
-.cart-button, .search-button, .add-to-cart-button {
+.cart-button,
+.search-button,
+.add-to-cart-button {
     margin: 0 15px 0 0;
     padding: 8px 12px;
     box-sizing: border-box;
@@ -37,7 +40,8 @@ button:active, button:focus {
     cursor: pointer;
 }
 
-.cart-button:hover, .search-button:hover {
+.cart-button:hover,
+.search-button:hover {
     background: white;
 }
 
@@ -53,7 +57,7 @@ button:active, button:focus {
 .goods-search {
     margin: 0 15px 0 0;
     height: 20px;
-    width: 15%;
+    width: 200px;
     padding: 0 5px;
 }
 
@@ -97,7 +101,7 @@ button:active, button:focus {
 }
 
 .layover {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100vh;
     position: fixed;
@@ -145,6 +149,7 @@ button:active, button:focus {
 .cart h2 {
     margin-bottom: 20px;
 }
+
 .cart-item {
     background-color: white;
     outline: 1px solid gray;
